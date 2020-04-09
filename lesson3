@@ -1,0 +1,251 @@
+DROP DATABASE IF EXISTS vk;
+CREATE DATABASE vk;
+USE vk;
+
+DROP TABLE IF EXISTS users;
+CREATE TABLE users (
+	id SERIAL PRIMARY KEY, -- SERIAL = BIGINT UNSIGNED NOT NULL AUTO_INCREMENT UNIQUE
+    firstname VARCHAR(50),
+    lastname VARCHAR(50) COMMENT 'Фамиль', -- COMMENT на случай, если имя неочевидное
+    email VARCHAR(120) UNIQUE,
+    phone BIGINT, 
+    INDEX users_phone_idx(phone), -- как выбирать индексы?
+    INDEX users_firstname_lastname_idx(firstname, lastname)
+);
+
+INSERT INTO `users` VALUES ('1','Aracely','Johnson','timmothy.gleichner@example.com','0'),
+('2','Zander','Rutherford','ykovacek@example.com','875143'),
+('3','Pasquale','Collier','nmertz@example.org','0'),
+('4','Noah','Waelchi','wortiz@example.net','0'),
+('5','Jonas','Wilderman','christina.luettgen@example.net','5202933551'),
+('6','Gustave','West','brendon82@example.com','678'),
+('7','Easter','Johnson','rempel.concepcion@example.net','96'),
+('8','Mariano','Douglas','leilani.pfeffer@example.net','43'),
+('9','Arno','Walter','rasheed.cruickshank@example.org','1'),
+('10','Raymond','Cronin','christina.morissette@example.net','0'),
+('11','Bernardo','Stokes','jeromy11@example.com','1130193996'),
+('12','Harvey','Koch','phyllis46@example.net','579'),
+('13','Johnpaul','McLaughlin','murazik.amira@example.org','434110'),
+('14','Rebeka','Hills','coy89@example.org','0'),
+('15','Lisandro','Gulgowski','lottie56@example.net','675112'),
+('16','Barbara','Bosco','uhirthe@example.com','698641'),
+('17','Bennett','Russel','damion.quitzon@example.com','0'),
+('18','Caterina','Towne','kiara44@example.com','888592'),
+('19','Napoleon','Wehner','mitchell.candice@example.com','0'),
+('20','Lurline','Huel','beatty.tiara@example.org','5541707188'),
+('21','Freda','Braun','zbednar@example.org','59'),
+('22','Judah','Fahey','xward@example.com','532785'),
+('23','Nash','Kertzmann','jayne82@example.net','840848'),
+('24','Mohammed','Herzog','jeramy.parisian@example.com','0'),
+('25','Constance','Windler','elody.rippin@example.net','0'),
+('26','Raphaelle','Schuppe','gibson.barry@example.com','0'),
+('27','Elian','Barrows','andres07@example.net','1'),
+('28','Whitney','Casper','lborer@example.com','18'),
+('29','Diamond','Mohr','spagac@example.net','0'),
+('30','Conner','Botsford','mcglynn.felton@example.com','1'),
+('31','Jennie','Rohan','fay.diego@example.com','723443'),
+('32','Destiney','Hills','sydney.mills@example.org','110'),
+('33','Rosetta','McDermott','bartoletti.brandon@example.net','105619'),
+('34','Amina','Metz','lenna.runolfsson@example.org','1'),
+('35','Eric','Fahey','greenfelder.jaime@example.com','3085438565'),
+('36','Elouise','Bednar','emelie.mayer@example.net','0'),
+('37','Waino','Ondricka','ucummerata@example.com','832549'),
+('38','Jarret','Swift','feeney.kelvin@example.com','334999'),
+('39','Jarod','Lesch','cristian83@example.net','1'),
+('40','Eulah','Beier','lucio.ledner@example.net','2818212063'),
+('41','Alvera','Runte','abby48@example.net','186'),
+('42','Helga','Jerde','oberbrunner.ezra@example.com','166669'),
+('43','Savanna','Cruickshank','cwhite@example.org','0'),
+('44','Jairo','Nader','nmuller@example.com','1'),
+('45','Ulises','Yost','rcummerata@example.net','567269'),
+('46','Jana','Cormier','katlyn88@example.org','1'),
+('47','Timmy','Steuber','ofeeney@example.com','0'),
+('48','Bradley','Bradtke','vullrich@example.net','1'),
+('49','Golden','Kunze','francesco76@example.org','499'),
+('50','Jared','Stehr','kavon21@example.org','80'),
+('51','Trisha','Gusikowski','rudy.kessler@example.com','812789'),
+('52','Trever','Wiegand','botsford.herminia@example.org','1'),
+('53','Javonte','Thiel','kdickens@example.org','948'),
+('54','Alexandre','Lang','qharber@example.org','349'),
+('55','Alba','Hudson','jacques88@example.com','603788'),
+('56','Columbus','Kilback','lbreitenberg@example.net','984'),
+('57','Kirstin','Kiehn','zetta.skiles@example.com','856036311'),
+('58','Gilbert','Abernathy','lstreich@example.net','1'),
+('59','Nelda','Hirthe','senger.dameon@example.com','644223'),
+('60','Montana','Crona','rmorissette@example.net','1487121880'),
+('61','Lizeth','Boyer','gkuhic@example.com','466'),
+('62','Deshaun','Wisozk','bernier.kendra@example.com','0'),
+('63','Jocelyn','Schiller','caesar49@example.org','1'),
+('64','Yasmeen','Heaney','koelpin.mckenzie@example.com','73'),
+('65','Rodrigo','O\'Reilly','rollin.walsh@example.org','1'),
+('66','Angelina','Klein','loyce72@example.org','1261966815'),
+('67','Concepcion','Davis','agreenfelder@example.com','545164'),
+('68','Timothy','Ernser','corwin.patsy@example.org','395'),
+('69','Jordyn','Swaniawski','khahn@example.net','1'),
+('70','Brayan','Fahey','bzieme@example.org','376'),
+('71','Callie','Simonis','bergnaum.flavie@example.com','624'),
+('72','Maye','Balistreri','paul70@example.com','331'),
+('73','Trenton','Harris','xmorissette@example.com','29'),
+('74','Rachael','Cummerata','boyle.quinten@example.net','23'),
+('75','Pat','Rippin','yvonne22@example.net','1'),
+('76','Norma','Koss','elliott06@example.org','1'),
+('77','Dahlia','Huels','aquigley@example.com','0'),
+('78','Oran','Windler','mavis78@example.org','36'),
+('79','Isaiah','Thiel','berneice33@example.org','705'),
+('80','Ezra','Smitham','alexys89@example.com','114184'),
+('81','Madisyn','Ortiz','parisian.bud@example.org','1'),
+('82','Rhiannon','West','shanny65@example.com','582215'),
+('83','Hans','Hagenes','morissette.madge@example.net','0'),
+('84','Aaron','Becker','zroob@example.net','0'),
+('85','Oran','Gutkowski','llemke@example.net','0'),
+('86','Murl','Gaylord','awindler@example.org','425496'),
+('87','Terrell','Marquardt','mckenzie.kale@example.com','1'),
+('88','Autumn','Koepp','freddy29@example.com','953165'),
+('89','Pedro','Zemlak','hirthe.antonia@example.com','5813'),
+('90','Sigurd','Heathcote','rory.ziemann@example.net','1243329111'),
+('91','Mafalda','Bernhard','diana89@example.org','499309'),
+('92','Alisa','D\'Amore','schmeler.theo@example.com','2866155961'),
+('93','Celestine','Runolfsdottir','kkiehn@example.com','0'),
+('94','Katherine','Russel','austyn64@example.org','1'),
+('95','Lindsey','Toy','melyna53@example.com','9619401501'),
+('96','Delia','Nienow','gaylord.ferne@example.org','0'),
+('97','Ethyl','Harvey','bessie75@example.com','691323'),
+('98','Elvera','Huels','o\'kon.jayme@example.com','1'),
+('99','Jameson','Hammes','shirley.johnson@example.org','9437570948'),
+('100','Granville','McClure','grady.jennie@example.net','0');
+
+DROP TABLE IF EXISTS `profiles`;
+CREATE TABLE `profiles` (
+	user_id SERIAL PRIMARY KEY,
+    gender CHAR(1),
+    birthday DATE,
+	photo_id BIGINT UNSIGNED NULL,
+    created_at DATETIME DEFAULT NOW(),
+    hometown VARCHAR(100),
+    FOREIGN KEY (user_id) REFERENCES users(id) -- что за зверь в целом?
+    	ON UPDATE CASCADE -- как это работает? Какие варианты?
+    	ON DELETE restrict -- как это работает? Какие варианты?
+    -- , FOREIGN KEY (photo_id) REFERENCES media(id) -- пока рано, т.к. таблицы media еще нет
+);
+
+DROP TABLE IF EXISTS messages;
+CREATE TABLE messages (
+	id SERIAL PRIMARY KEY,
+	from_user_id BIGINT UNSIGNED NOT NULL,
+    to_user_id BIGINT UNSIGNED NOT NULL,
+    body TEXT,
+    created_at DATETIME DEFAULT NOW(), -- можно будет даже не упоминать это поле при вставке
+    INDEX messages_from_user_id (from_user_id),
+    INDEX messages_to_user_id (to_user_id),
+    FOREIGN KEY (from_user_id) REFERENCES users(id),
+    FOREIGN KEY (to_user_id) REFERENCES users(id)
+);
+
+DROP TABLE IF EXISTS friend_requests;
+CREATE TABLE friend_requests (
+	-- id SERIAL PRIMARY KEY, -- изменили на композитный ключ (initiator_user_id, target_user_id)
+	initiator_user_id BIGINT UNSIGNED NOT NULL,
+    target_user_id BIGINT UNSIGNED NOT NULL,
+    -- `status` TINYINT UNSIGNED,
+    `status` ENUM('requested', 'approved', 'unfriended', 'declined'),
+    -- `status` TINYINT UNSIGNED, -- в этом случае в коде хранили бы цифирный enum (0, 1, 2, 3...)
+	requested_at DATETIME DEFAULT NOW(),
+	confirmed_at DATETIME,
+	
+    PRIMARY KEY (initiator_user_id, target_user_id),
+	INDEX (initiator_user_id), -- потому что обычно будем искать друзей конкретного пользователя
+    INDEX (target_user_id),
+    FOREIGN KEY (initiator_user_id) REFERENCES users(id),
+    FOREIGN KEY (target_user_id) REFERENCES users(id)
+);
+
+DROP TABLE IF EXISTS communities;
+CREATE TABLE communities(
+	id SERIAL PRIMARY KEY,
+	name VARCHAR(150),
+
+	INDEX communities_name_idx(name)
+);
+
+INSERT INTO `communities` VALUES ('6','aliquam'),
+('5','consequatur'),
+('3','dolore'),
+('8','eaque'),
+('10','et'),
+('7','nisi'),
+('4','odit'),
+('1','quaerat'),
+('9','quo'),
+('2','soluta');
+
+DROP TABLE IF EXISTS users_communities;
+CREATE TABLE users_communities(
+	user_id BIGINT UNSIGNED NOT NULL,
+	community_id BIGINT UNSIGNED NOT NULL,
+  
+	PRIMARY KEY (user_id, community_id), -- чтобы не было 2 записей о пользователе и сообществе
+    FOREIGN KEY (user_id) REFERENCES users(id),
+    FOREIGN KEY (community_id) REFERENCES communities(id)
+);
+
+DROP TABLE IF EXISTS media_types;
+CREATE TABLE media_types(
+	id SERIAL PRIMARY KEY,
+    name VARCHAR(255),
+    created_at DATETIME DEFAULT NOW(),
+    updated_at DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+
+    -- записей мало, поэтому индекс будет лишним (замедлит работу)!
+);
+
+DROP TABLE IF EXISTS media;
+CREATE TABLE media(
+	id SERIAL PRIMARY KEY,
+    media_type_id BIGINT UNSIGNED NOT NULL,
+    user_id BIGINT UNSIGNED NOT NULL,
+  	body text,
+    filename VARCHAR(255),
+    size INT,
+	metadata JSON,
+    created_at DATETIME DEFAULT NOW(),
+    updated_at DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+
+    INDEX (user_id),
+    FOREIGN KEY (user_id) REFERENCES users(id),
+    FOREIGN KEY (media_type_id) REFERENCES media_types(id)
+);
+
+DROP TABLE IF EXISTS likes;
+CREATE TABLE likes(
+    initiator_user_idd BIGINT UNSIGNED NOT NULL,
+    media_id BIGINT UNSIGNED NOT NULL,
+    target_user_idd BIGINT UNSIGNED NOT NULL,
+    created_at DATETIME DEFAULT NOW()
+
+    -- PRIMARY KEY (user_id, media_id) – можно было и так вместо id в качестве PK
+  	-- слишком увлекаться индексами тоже опасно, рациональнее их добавлять по мере необходимости (напр., провисают по времени какие-то запросы)  
+PRIMARY KEY (initiator_user_idd, target_user_idd),
+FOREIGN KEY (initiator_user_idd) REFERENCES users(id),
+FOREIGN KEY (media_id) REFERENCES media(id),
+FOREIGN KEY (target_user_idd) REFERENCES media(id)
+);
+
+DROP TABLE IF EXISTS `photo_albums`;
+CREATE TABLE `photo_albums` (
+	`id` SERIAL,
+	`name` varchar(255) DEFAULT NULL,
+    `user_id` BIGINT UNSIGNED DEFAULT NULL,
+
+    FOREIGN KEY (user_id) REFERENCES users(id),
+  	PRIMARY KEY (`id`)
+);
+
+DROP TABLE IF EXISTS `photos`;
+CREATE TABLE `photos` (
+	id SERIAL PRIMARY KEY,
+	`album_id` BIGINT unsigned NOT NULL,
+	`media_id` BIGINT unsigned NOT NULL,
+
+	FOREIGN KEY (album_id) REFERENCES photo_albums(id),
+    FOREIGN KEY (media_id) REFERENCES media(id)
+);
